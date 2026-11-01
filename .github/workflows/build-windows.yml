@@ -1,0 +1,70 @@
+name: Build Windows exe
+
+# Builds ScheutieOS-8.4.2-Setup.exe on a Windows runner and attaches it to a
+# release in THIS repo (the download repo), so the default GITHUB_TOKEN is
+# enough — no personal access token needed.
+#
+# The source lives in the public LynneScheutie/ScheutieOS repo and is cloned
+# with plain git, so no cross-repo permissions are involved.
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'Windows-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Clone the public source repo
+        shell: bash
+        run: git clone --depth 1 https://github.com/LynneScheutie/ScheutieOS.git src-repo
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build the installer
+        shell: pwsh
+        working-directory: src-repo/Windows
+        run: .\build.ps1 -NoIconRegen
+
+      - name: Show what was built
+        shell: bash
+        run: |
+          ls -l src-repo/Windows/build/*.exe
+          du -h src-repo/Windows/build/*.exe
+
+      - name: Upload as an Actions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ScheutieOS-Windows-Setup
+          path: src-repo/Windows/build/ScheutieOS-*-Setup.exe
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Attach to the release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ver=$(sed -n 's:.*<FileVersion>\([^<]*\)</FileVersion>.*:\1:p' \
+                src-repo/Windows/src/ScheutieOS.csproj | head -1)
+          echo "version: $ver"
+          tag="Windows-v$ver"
+          exe="src-repo/Windows/build/ScheutieOS-$ver-Setup.exe"
+          test -f "$exe" || { echo "expected $exe"; exit 1; }
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$exe" --clobber
+          else
+            gh release create "$tag" "$exe" \
+              --title "Windows $ver" \
+              --notes "由 GitHub Actions 从源码构建，未经实机验证。"
+          fi
