@@ -79,9 +79,9 @@ xattr -dr com.apple.quarantine /Applications/ScheutieOS.app
 
 | 文件 | SHA-256 |
 | --- | --- |
-| `ScheutieOS-8.4.2.pkg` | `8c7c2a6b5d4fccafda5403697f2c35b49fd5107e3de7822bcd60f55df9f9af24` |
-| `ScheutieOS-8.4.2.dmg` | `7d04e51a23d827b7f3a8cd8041252138cb198099ba32261ef4913bb1237f6c02` |
-| `ScheutieOS-8.4.2.zip` | `86ea84e751ed41d2ce7a769d5bc85cf6bea56555ae96b312354557a61b632d46` |
+| `ScheutieOS-8.4.2.pkg` | `714e0000713056309079f14bbf927e6d628208733074ef8647d6f8e8c09d2177` |
+| `ScheutieOS-8.4.2.dmg` | `ec648d95b0d5ba124a5b1ac1853fe58075927b622966fb51c7f3b0a891b232c9` |
+| `ScheutieOS-8.4.2.zip` | `bb9d46132d8c984813c04f998ee57f0556d911ed9033c28281eab844f40fa15b` |
 
 对比方式：`shasum -a 256 文件名`。
 
