@@ -52,9 +52,9 @@
 
 | 文件 | 大小 | 说明 |
 | --- | --- | --- |
-| [ScheutieOS-8.4.2.pkg](https://github.com/LynneScheutie/ScheutieOS-download/releases/download/macOS-v8.4.2/ScheutieOS-8.4.2.pkg) | 1.5 MB | **最省事**。双击一路「继续」，装完直接可用，不会被标记为「来自网络」 |
-| [ScheutieOS-8.4.2.dmg](https://github.com/LynneScheutie/ScheutieOS-download/releases/download/macOS-v8.4.2/ScheutieOS-8.4.2.dmg) | 1.6 MB | 有拖拽窗口，拖进「应用程序」那种熟悉的流程 |
-| [ScheutieOS-8.4.2.zip](https://github.com/LynneScheutie/ScheutieOS-download/releases/download/macOS-v8.4.2/ScheutieOS-8.4.2.zip) | 1.5 MB | 解压得到 app，自己拖到「应用程序」 |
+| [ScheutieOS-8.4.2.pkg](https://github.com/LynneScheutie/ScheutieOS_Download/releases/download/macOS-v8.4.2/ScheutieOS-8.4.2.pkg) | 1.5 MB | **最省事**。双击一路「继续」，装完直接可用，不会被标记为「来自网络」 |
+| [ScheutieOS-8.4.2.dmg](https://github.com/LynneScheutie/ScheutieOS_Download/releases/download/macOS-v8.4.2/ScheutieOS-8.4.2.dmg) | 1.6 MB | 有拖拽窗口，拖进「应用程序」那种熟悉的流程 |
+| [ScheutieOS-8.4.2.zip](https://github.com/LynneScheutie/ScheutieOS_Download/releases/download/macOS-v8.4.2/ScheutieOS-8.4.2.zip) | 1.5 MB | 解压得到 app，自己拖到「应用程序」 |
 
 三个内容一样，只是打包方式不同，**任选一个**即可。
 
